@@ -7,8 +7,7 @@ A starter template for apps built on [nuxt-base](https://github.com/corsacca/nux
 ### 1. Clone this template
 
 ```bash
-npx giget gh:corsacca/nuxt-base-template#master my-app
-cd my-app
+npx giget gh:corsacca/nuxt-base-template#master .
 ```
 
 ### 2. Configure environment
