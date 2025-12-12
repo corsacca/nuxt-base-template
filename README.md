@@ -7,7 +7,7 @@ A starter template for apps built on [nuxt-base](https://github.com/corsacca/nux
 ### 1. Clone this template
 
 ```bash
-npx giget gh:corsacca/nuxt-base-template my-app
+npx giget gh:corsacca/nuxt-base-template#master my-app
 cd my-app
 ```
 
@@ -61,10 +61,6 @@ All files in this template are yours to modify:
 
 ## Documentation
 
-Copy `BASE_LAYER.md` from the layer for API reference:
+`BASE_LAYER.md` is included in this template with the complete API reference for the base layer.
 
-```bash
-cp node_modules/.c12/github_corsacca_nuxt_*/BASE_LAYER.md .
-```
-
-See the [nuxt-base repository](https://github.com/corsacca/nuxt-base) for full documentation.
+See the [nuxt-base repository](https://github.com/corsacca/nuxt-base) for layer documentation.
