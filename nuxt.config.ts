@@ -1,6 +1,8 @@
 export default defineNuxtConfig({
   extends: ['github:corsacca/nuxt-base#master'],
 
+  devtools: { enabled: true },
+
   runtimeConfig: {
     appName: process.env.APP_TITLE,
     jwtSecret: process.env.JWT_SECRET,

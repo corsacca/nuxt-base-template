@@ -33,34 +33,59 @@ npm run dev
 
 Migrations run automatically. Your app is ready at http://localhost:3000
 
-## What's Included
+## What's in This Template
 
-This template provides:
+| File | Purpose |
+|------|---------|
+| `app/app.vue` | App wrapper - customize for your app |
+| `app/pages/index.vue` | Landing page - customize for your app |
+| `server/api/example/` | Example authenticated API endpoints |
+| `nuxt.config.ts` | Extends the base layer |
+| `package.json` | Dependencies and scripts |
+| `.env.example` | Environment template |
+| `BASE_LAYER.md` | API reference for the base layer |
 
-- **Pages**: Landing, login, register, dashboard, profile, password reset
-- **Layouts**: Default (authenticated) and auth (centered cards)
-- **Configured**: nuxt.config.ts with base layer, package.json with dependencies
+## What Comes from the Layer
 
-The [nuxt-base](https://github.com/corsacca/nuxt-base) layer provides:
+The [nuxt-base](https://github.com/corsacca/nuxt-base) layer provides (with automatic updates):
 
-- Authentication (JWT, email verification, password reset)
-- Theme system (light/dark mode)
-- Email (SMTP templates)
-- S3 storage
-- Database utilities (PostgreSQL)
-- API routes
+- **Auth pages**: `/login`, `/register`, `/dashboard`, `/profile`, `/reset-password`
+- **Layouts**: `default`, `auth`
+- **Composables**: `useAuth()`, `useTheme()`
+- **Components**: `ThemeToggle`
+- **API routes**: Authentication, profile management
+- **Server utils**: Database, email, S3, JWT
+
+## Creating API Endpoints
+
+The base layer provides server utilities that are auto-imported. See `server/api/example/` for working examples.
+
+```typescript
+// server/api/my-endpoint.get.ts
+export default defineEventHandler(async (event) => {
+  // requireAuth() throws 401 if not logged in
+  const user = requireAuth(event)
+
+  // sql is a tagged template for database queries
+  const data = await sql`SELECT * FROM my_table WHERE user_id = ${user.userId}`
+
+  return { data }
+})
+```
+
+Available utilities: `requireAuth`, `getAuthUser`, `sql`, `sendEmail`, `createError`
 
 ## Customization
 
-All files in this template are yours to modify:
+**Files you own** (in this template):
+- `app/app.vue` - Modify freely
+- `app/pages/index.vue` - Your landing page
+- `server/api/` - Your API endpoints
 
-- Edit pages in `app/pages/`
-- Customize layouts in `app/layouts/`
-- Add components in `app/components/`
-- Extend `nuxt.config.ts` as needed
+**To override layer files**, copy them to your project:
+- Create `app/pages/login.vue` to customize login
+- Create `app/layouts/default.vue` to customize the layout
 
 ## Documentation
 
-`BASE_LAYER.md` is included in this template with the complete API reference for the base layer.
-
-See the [nuxt-base repository](https://github.com/corsacca/nuxt-base) for layer documentation.
+`BASE_LAYER.md` contains the complete API reference for the base layer.

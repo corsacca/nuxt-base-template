@@ -311,6 +311,40 @@ definePageMeta({
 
 ---
 
+## Layouts
+
+### `default`
+
+Main layout for authenticated pages.
+
+**Features:**
+- Sticky header with app name
+- User display name in header
+- Profile button and theme toggle
+- Named slots: `header-left`, `header-right`
+
+### `auth`
+
+Centered layout for authentication pages (login, register, reset-password).
+
+---
+
+## Pages
+
+The layer provides these pages (override by creating the same file in your project):
+
+| Path | Layout | Auth Required | Purpose |
+|------|--------|---------------|---------|
+| `/login` | auth | No | Login form with forgot password |
+| `/register` | auth | No | Registration with email verification |
+| `/reset-password` | auth | No | Password reset (requires token) |
+| `/dashboard` | default | Yes | Protected dashboard |
+| `/profile` | default | Yes | Profile management |
+
+**Note:** The landing page (`/`) should be provided by your project via the template.
+
+---
+
 ## Server API Endpoints
 
 ### Authentication
